@@ -1,3 +1,12 @@
 
+def partOne(input):
+    print()
+
+
+def partTwo(input):
+    print()
+
+
 def main(input):
-    print(input)
+    partOne(input)
+    partTwo(input)    
