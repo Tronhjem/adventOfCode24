@@ -1,6 +1,6 @@
 testInput = ['3   4','4   3', '2   5', '1   3', '3   9', '3   3'] 
 
-def sortList(input ):
+def sortInput(input ):
     # input = testInput
     leftColumn = []
     rightColumn = []
@@ -16,7 +16,7 @@ def sortList(input ):
 
 
 def partOne(input):
-    leftColumn, rightColumn = sortList(input)
+    leftColumn, rightColumn = sortInput(input)
 
     sum = 0
     for x in range(len(leftColumn)):
@@ -27,7 +27,7 @@ def partOne(input):
 
 def partTwo(input):
     # input = testInput
-    leftColumn, rightColumn = sortList(input)
+    leftColumn, rightColumn = sortInput(input)
 
     score = 0
     for x in leftColumn:
