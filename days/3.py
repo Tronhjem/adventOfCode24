@@ -34,7 +34,7 @@ def partOne(input):
 
 def partTwo(input):
     sum = 0
-    # input = testPartTwo
+    input = testPartTwo
 
     oneLine = f''
     for line in input:
@@ -46,13 +46,18 @@ def partTwo(input):
     #     num1, num2 = match
     #     sum += int(num1) * int(num2)
     
-    dos = findDoToDont(oneLine)
-    for do in dos:
-        matches = findMulInstances(do)
-        for match in matches:
-            print(match)
-            num1, num2 = match
-            sum += int(num1) * int(num2)
+    # dos = findDoToDont(oneLine)
+    # for do in dos:
+    #     matches = findMulInstances(do)
+    #     for match in matches:
+    #         print(match)
+    #         num1, num2 = match
+    #         sum += int(num1) * int(num2)
+
+
+    corrupted_memory = re.sub(r"don't\(\).*?(?=do\(\)|$)", "", oneLine, flags=re.DOTALL)
+    occurences = re.findall("mul\(\d+,\d+\)", corrupted_memory)
+    digits = [re.findall("\d+", occurence) for occurence in occurences]
 
     print(sum)
 
