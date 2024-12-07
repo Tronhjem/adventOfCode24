@@ -49,17 +49,21 @@ def partOne(input):
 
 def partTwo(input):
     input = sanitizeInput(input)
+
     safeCount = 0
     for line in input:
         if isSafe(line):
             safeCount += 1
         else:
             for x in range(len(line)):
-                
+                newLine = line[:x] + line[x+1:]
+                if isSafe(newLine):
+                    safeCount += 1
+                    break
 
     print(safeCount)
 
-
 def main(input):
     partOne(input)
-    # partTwo(input)    
+    partTwo(input)
+
