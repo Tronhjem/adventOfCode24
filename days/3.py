@@ -9,18 +9,6 @@ def findMulInstances(input):
     return matches
 
 
-def findDoToDont(input):
-    pattern = re.compile(r'(do\(\))(.*)(don\'t\(\)|$)')
-    matches = pattern.findall(input)
-    return matches[0]
-
-
-def findUntilDontBeginning(input):
-    pattern = re.compile(r'(.*)(don\'t\(\))')
-    matches = pattern.findall(input)
-    return matches[0]
-
-
 def partOne(input):
     sum = 0
     for line in input:
@@ -34,30 +22,18 @@ def partOne(input):
 
 def partTwo(input):
     sum = 0
-    input = testPartTwo
+    # input = testPartTwo
 
     oneLine = f''
     for line in input:
         oneLine += line
     
-    # beginning = findUntilDontBeginning(oneLine)
-    # matches = findMulInstances(beginning[0])
-    # for match in matches:
-    #     num1, num2 = match
-    #     sum += int(num1) * int(num2)
-    
-    # dos = findDoToDont(oneLine)
-    # for do in dos:
-    #     matches = findMulInstances(do)
-    #     for match in matches:
-    #         print(match)
-    #         num1, num2 = match
-    #         sum += int(num1) * int(num2)
-
-
-    corrupted_memory = re.sub(r"don't\(\).*?(?=do\(\)|$)", "", oneLine, flags=re.DOTALL)
-    occurences = re.findall("mul\(\d+,\d+\)", corrupted_memory)
-    digits = [re.findall("\d+", occurence) for occurence in occurences]
+    dos = re.sub(r"don't\(\).*?(?=do\(\)|$)", "", oneLine, flags=re.DOTALL)
+    matches = findMulInstances(dos)
+    for match in matches:
+        print(match)
+        num1, num2 = match
+        sum += int(num1) * int(num2)
 
     print(sum)
 
